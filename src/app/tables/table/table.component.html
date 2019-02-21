@@ -1,0 +1,70 @@
+<div class="app-component">
+  <h1 class="text-center">Adventure Time</h1>
+  <app-table></app-table>
+  </div>
+
+<div class='row'>
+  <div class='col-md-2'>Filter by:</div>
+  <div class='col-md-4'>
+    <input type='text'
+           [(ngModel)]='listFilter' />
+  </div>
+</div>
+<div class='row'
+     *ngIf='listFilter'>
+  <div class='col-md-6'>
+    <h4>Filtered by: {{listFilter}}</h4>
+  </div>
+</div>
+
+<div class='table-responsive'>
+  <table class='table'
+         *ngIf='clients && clients.length'>
+    <thead>
+      <tr>
+        <th>
+          <button class=''
+                  (click)='submitId()'><!--'btn btn-primary'-->
+            <!--{{submitId ? 'Visited' : 'Virgin'}} Post clientId to api/submit, er, route-->
+          </button>
+        </th>
+        <th>Client</th>
+        <th>Code</th>
+        <th>Available</th>
+        <th>Price</th>
+        <th>TBD</th>
+      </tr>
+    </thead>
+    <tbody><!--proly some easier way to show certain number of rows-->
+      <tr *ngFor='let client of paginatedclients'>
+        <td>
+           <!-- *ngIf='paginated'
+          
+               [title]='client.clientName'
+               [style.width.px]='tableWidth'
+               [style.margin.px]='tableMargin'--> 
+        </td>
+        <td>
+          <a [routerLink]="['/clients', client.clientId]">
+            {{ client.clientName }}
+          </a>
+        </td><!--problem with prop name approach is evaluators will change dataset
+        ~ So, is an interface best approach?? -->
+        <td>{{ client.clientPhone | lowercase | convertToSpaces: '-' }}</td>
+        <td>{{ client.dateFirst }}</td>
+        <td>{{ client.dateExit }}</td>
+        <td>{{ client.dateRecent }}</td>
+        <td>{{ client.price | currency:'USD':'symbol':'1.2-2' }}</td>
+        <td>
+          <ct-dir [submit]='client.submit'
+                   (submitClicked)='onSubmitClicked($event)'>
+        </ct-dir>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf='errorMessage'
+ class='alert alert-danger'>
+Error: {{ errorMessage }}
+</div>
