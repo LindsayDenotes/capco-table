@@ -1,0 +1,82 @@
+<div>
+  <h1 class="text-center">Paginated Table</h1>
+  <!--Is ct-table dir used? Should it be pg-table?-->
+  <ct-table></ct-table>
+</div>
+<table *ngIf='clients && clients.length'>
+  <tr>
+    <td>Select number of rows:</td>
+    <td><!--input type shd b select. Proly won't need ngModel-->
+      <input type='text'
+      [(ngModel)]='listFilter' />
+    </td>
+    <td *ngIf='listFilter'>
+      <h4>Number of rows: {{listFilter}}</h4>
+    </td>
+  </tr>
+  <thead>
+    <!--problem with prop name approach is evaluators will change dataset -->
+      <tr><!--How can we make the interface an enum ts datatype?-->
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Company</th>
+        <th>Date of Entry</th>
+        <th>Organization Number</th>
+        <th>Street Address</th>
+        <th>City</th>
+        <th>Postal Code</th>
+        <th>Geo Coordinates</th>
+        <th>Map Pan</th>
+        <th>Map Pin</th>
+        <th>Client Id</th>
+        <th>Status</th>
+        <th>Fee</th>
+        <th>GUID</th>
+        <th>Date of Exit</th>
+        <th>Date First</th>
+        <th>Date Recent</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody><!--proly some easier way to show certain number of rows-->
+      <tr *ngFor='let client of filteredClients'>
+        <!--Mb try write a method like showNumofRows(): void { ... }-->
+        <td>
+          <!-- <a [routerLink]="['/clients', client.clientId]"> -->
+          <a [routerLink]="['/clients', client.clientId]"></a>
+            {{ client.clientName }}
+          </a>
+        </td>        
+        <!-- exa <td>{{ client.phone | lowercase | convertToSpaces: '-' }}</td> -->
+        <td>{{ client.phone }} </td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.company }}</td>
+        <td>{{ client.date_entry | date:"MM/dd/yy" }}</td>
+        <td>{{ client.org_num }}</td>
+        <td>{{ client.address_1 }}</td>
+        <td>{{ client.city }}</td>
+        <td>{{ client.zip }}</td>
+        <td>{{ client.geo }}</td>
+        <td>{{ client.pan }}</td>
+        <td>{{ client.pin }}</td>
+        <td>{{ client.clientId }}</td><!--submit-->
+        <td>{{ client.clientStatus }}</td><!--submit-->
+        <td>{{ client.fee | currency:'USD':'symbol':'1.2-2' }}</td>
+        <td>{{ client.guid }}</td>
+        <td>{{ client.date_exit | date:"MM/dd/yy" }}</td>
+        <td>{{ client.date_first | date:"MM/dd/yy" }}</td>
+        <td>{{ client.date_recent | date:"MM/dd/yy" }}</td>
+        <td>
+          <ct-dir [submit]='client.submit'
+                   (submitClicked)='onSubmitClicked($event)'>
+        </ct-dir>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf='errorMessage'
+ class='alert alert-danger'>
+Error: {{ errorMessage }}
+</div>
