@@ -1,22 +1,23 @@
 <div>
   <h1 class="text-center">Paginated Table</h1>
-  <!--Is ct-table dir used? Should it be pg-table?-->
-  <ct-table></ct-table>
+  <!--Is ct-table dir used? It shd be pg-table-->
+  <ct-pg-table></ct-pg-table>
 </div>
 <table *ngIf='clients && clients.length'>
   <tr>
-    <td>Select number of rows:</td>
-    <td><!--input type shd b select. Proly won't need ngModel-->
+    <<td>Select number of rows:</td>
+    <td><!--input type shd b select. Proly won't need ngModel>
       <input type='text'
-      [(ngModel)]='listFilter' />
+      [(ngModel)]='listFilter' /-->
     </td>
-    <td *ngIf='listFilter'>
-      <h4>Number of rows: {{listFilter}}</h4>
+    <td> <!--*ngIf='listFilter'-->
+      <h4>Number of rows:</h4> <!--{{listFilter}}</h4-->
     </td>
   </tr>
   <thead>
     <!--problem with prop name approach is evaluators will change dataset -->
       <tr><!--How can we make the interface an enum ts datatype?-->
+        <!--approach a for header row-->
         <th>Name</th>
         <th>Phone</th>
         <th>Email</th>
@@ -29,7 +30,7 @@
         <th>Geo Coordinates</th>
         <th>Map Pan</th>
         <th>Map Pin</th>
-        <th>Client Id</th>
+        <th>Id</th>
         <th>Status</th>
         <th>Fee</th>
         <th>GUID</th>
@@ -38,17 +39,23 @@
         <th>Date Recent</th>
         <th>URL</th>
       </tr>
+      <!--approach b for header row-->
+      <tr>
+        <th *ngFor="let col of columns">
+          Approach B {{col}}
+        </th>
+      </tr>
     </thead>
-    <tbody><!--proly some easier way to show certain number of rows-->
-      <tr *ngFor='let client of filteredClients'>
+    <tbody>
+      <!--proly some easier way to show selected number of rows-->
+      <!--after I figure out number of rows to display, use this: <tr *ngFor='let client of filteredClients'> -->
+      <tr *ngFor='let client of clients'>
         <!--Mb try write a method like showNumofRows(): void { ... }-->
         <td>
-          <!-- <a [routerLink]="['/clients', client.clientId]"> -->
-          <a [routerLink]="['/clients', client.clientId]"></a>
-            {{ client.clientName }}
+          <a [routerLink]="['/clients', client.id]">
+            {{ client.name }}
           </a>
         </td>        
-        <!-- exa <td>{{ client.phone | lowercase | convertToSpaces: '-' }}</td> -->
         <td>{{ client.phone }} </td>
         <td>{{ client.email }}</td>
         <td>{{ client.company }}</td>
@@ -60,17 +67,17 @@
         <td>{{ client.geo }}</td>
         <td>{{ client.pan }}</td>
         <td>{{ client.pin }}</td>
-        <td>{{ client.clientId }}</td><!--submit-->
-        <td>{{ client.clientStatus }}</td><!--submit-->
+        <td>{{ client.id }}</td><!--TO DO submit-->
+        <td>{{ client.status }}</td><!--TO DO submit-->
         <td>{{ client.fee | currency:'USD':'symbol':'1.2-2' }}</td>
         <td>{{ client.guid }}</td>
         <td>{{ client.date_exit | date:"MM/dd/yy" }}</td>
         <td>{{ client.date_first | date:"MM/dd/yy" }}</td>
         <td>{{ client.date_recent | date:"MM/dd/yy" }}</td>
-        <td>
-          <ct-dir [submit]='client.submit'
+        <td><!--TO DO click event for submit-->
+          <!-- <ct-dir [submit]='client.submit'
                    (submitClicked)='onSubmitClicked($event)'>
-        </ct-dir>
+          </ct-dir> -->
         </td>
       </tr>
     </tbody>

@@ -9,9 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.scss']
 })
 // APM
-// @Component({
-//   templateUrl: './welcome.component.html'
-// })
 // export class WelcomeComponent {
 //   public pageTitle = 'Welcome';
 // }

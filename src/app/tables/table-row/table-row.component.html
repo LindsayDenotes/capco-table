@@ -1,4 +1,7 @@
   <tr>
+    <td *ngFor="let col of columns"><!--or shd it b {{clientId[col]}}-->
+        {{client[col]}}
+    </td>
     <td>
       <button class=''
         (click)='submitId()'

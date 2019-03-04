@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IClient } from '../../tables/client';
 import { ClientService } from 'src/app/tables/client.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,7 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TableRowComponent implements OnInit {
   errorMessage = '';
-  client: IClient | undefined;
+  client: IClient | undefined; // APM
+  // @Input() client: id; // proly don't need both @Input AND paramMap.get below
+  // @Input() columns: string[];
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -18,7 +20,8 @@ export class TableRowComponent implements OnInit {
   }
 
   ngOnInit() {
-    const param = this.route.snapshot.paramMap.get('id');
+//     // copy, paste, and change these two methods to show default NumOfRows
+    const param = this.route.snapshot.paramMap.get('id'); // .getNumOfRows
     if (param) {
       const id = +param;
       this.getClient(id);

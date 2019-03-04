@@ -10,8 +10,7 @@ import { IClient } from './client';
   providedIn: 'root'
 })
 export class ClientService {
-  private clientUrl = 'api/clients/clients.json'
-  
+  private clientUrl = 'api/clients/clients.json';
   constructor(private http: HttpClient) { }
 
   getClients(): Observable<IClient[]> {
@@ -23,7 +22,7 @@ export class ClientService {
 
   getClient(id: number): Observable<IClient | undefined> {
     return this.getClients().pipe(
-      map((clients: IClient[]) => clients.find(p => p.id === id))
+      map((clients: IClient[]) => clients.find(c => c.id === id))
     );
   }
 

@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './welcome.component';
-import { TableModule } from './tables/table/table.module';
+import { WelcomeComponent } from './home/welcome.component';
+import { TablesModule } from './tables/tables.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +16,11 @@ import { TableModule } from './tables/table/table.module';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },      
+      { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ]),
-    TableModule
+    TablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
