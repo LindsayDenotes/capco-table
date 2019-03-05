@@ -6,11 +6,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { TablesModule } from './tables/tables.module';
+import { PgTableComponent } from './tables/pg-table/pg-table.component';
+import { TableRowComponent } from './tables/table-row/table-row.component';
 
 @NgModule({
+  // our app's own components, directives, and custom pipes
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    PgTableComponent,
+    TableRowComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 // import { HttpClient } from 'selenium-webdriver/http'; // CLI
+// import { HttpErrorResponse } from '@angular/common/http'; // part from APM
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'; // from APM
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';

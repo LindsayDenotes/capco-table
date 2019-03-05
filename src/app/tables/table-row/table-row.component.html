@@ -1,6 +1,9 @@
   <tr>
-    <td *ngFor="let col of columns"><!--or shd it b {{clientId[col]}}-->
-        {{client[col]}}
+    <!-- <td *ngFor="let col of columns"> -->
+    <td *ngFor="let client of clients">
+      {{}}
+      <!--or shd it b {{clientId[col]}}-->
+        <!-- {{client[col]}} -->
     </td>
     <td>
       <button class=''

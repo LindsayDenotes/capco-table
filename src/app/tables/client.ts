@@ -1,5 +1,4 @@
 export interface IClient {
-  position: number;
   name: string;
   phone: string;
   email: string;

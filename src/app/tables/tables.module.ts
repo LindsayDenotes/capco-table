@@ -15,7 +15,7 @@ import { TableRowComponent } from './table-row/table-row.component';
         // canActivate: [TableRowGuard],
         component: TableRowComponent
       },
-    ]),    
+    ]),
   ],
   declarations: [
     PgTableComponent,

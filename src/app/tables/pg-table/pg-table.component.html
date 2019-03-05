@@ -1,17 +1,22 @@
 <div>
   <h1 class="text-center">Paginated Table</h1>
-  <!--Is ct-table dir used? It shd be pg-table-->
   <ct-pg-table></ct-pg-table>
 </div>
 <table *ngIf='clients && clients.length'>
   <tr>
-    <<td>Select number of rows:</td>
+    <td>Select number of rows:</td>
     <td><!--input type shd b select. Proly won't need ngModel>
       <input type='text'
       [(ngModel)]='listFilter' /-->
+      <select [(ngModel)]="selectedValue">
+        <option>3</option>
+        <option>5</option>
+        <option>20</option>
+        <option>50</option>
+      </select>
     </td>
     <td> <!--*ngIf='listFilter'-->
-      <h4>Number of rows:</h4> <!--{{listFilter}}</h4-->
+      <h4>Number of rows displaying:</h4> <!--{{listFilter}}</h4-->
     </td>
   </tr>
   <thead>
@@ -40,14 +45,13 @@
         <th>URL</th>
       </tr>
       <!--approach b for header row-->
-      <tr>
+      <!-- <tr>
         <th *ngFor="let col of columns">
           Approach B {{col}}
         </th>
-      </tr>
+      </tr> -->
     </thead>
     <tbody>
-      <!--proly some easier way to show selected number of rows-->
       <!--after I figure out number of rows to display, use this: <tr *ngFor='let client of filteredClients'> -->
       <tr *ngFor='let client of clients'>
         <!--Mb try write a method like showNumofRows(): void { ... }-->
