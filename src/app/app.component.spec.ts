@@ -16,10 +16,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'capco-table'`, () => {
+  it(`should have as title 'Capco Table in two variations'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('capco-table');
+    expect(app.title).toEqual('Capco Table in two variations');
   });
 
   it('should render title in a h1 tag', () => {

@@ -1,7 +1,7 @@
-  <tr>
+  <tr *ngIf='client'><!--or less likely 'pg-table'-->
     <!-- <td *ngFor="let col of columns"> -->
     <td *ngFor="let client of clients">
-      {{}}
+      {{client.id}}
       <!--or shd it b {{clientId[col]}}-->
         <!-- {{client[col]}} -->
     </td>

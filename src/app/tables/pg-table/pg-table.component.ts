@@ -36,11 +36,10 @@ export class PgTableComponent implements OnInit {
   // proly ng1: item in items | filter:x
   // APM example proly too complex
   NumOfRowsOptions = [
-    5, 10, this.clients.length
-    // { id: 0, name: "Perfect" },
-    // { id: 1, name: "Low" },
-    // { id: 2, name: "Minor" },
-    // { id: 3, name: "High" },
+    5, 10, 15
+    // { id: 0, name: "5" }, this.clients.length
+    // { id: 1, name: "10" },
+    // { id: 2, name: "All" },
   ];
 
   performFilter(filterBy: string): IClient[] {

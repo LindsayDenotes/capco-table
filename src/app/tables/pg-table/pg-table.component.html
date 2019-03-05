@@ -8,7 +8,7 @@
     <td><!--input type shd b select. Proly won't need ngModel>
       <input type='text'
       [(ngModel)]='listFilter' /-->
-      <select [(ngModel)]="selectedValue">
+      <select [(ngModel)]='selectedValue'>
         <option>3</option>
         <option>5</option>
         <option>20</option>
@@ -56,7 +56,7 @@
       <tr *ngFor='let client of clients'>
         <!--Mb try write a method like showNumofRows(): void { ... }-->
         <td>
-          <a [routerLink]="['/clients', client.id]">
+          <a [routerLink]="['/pg-table', client.id]">
             {{ client.name }}
           </a>
         </td>        
@@ -86,7 +86,6 @@
       </tr>
     </tbody>
   </table>
-</div>
 <div *ngIf='errorMessage'
  class='alert alert-danger'>
 Error: {{ errorMessage }}

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-// APM
-// import { Component } from '@angular/core';
+// import { Component, OnInit } from '@angular/core'; // CLI
+import { Component } from '@angular/core'; // APM
 
 // CLI
 @Component({
@@ -9,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.scss']
 })
 // APM
-// export class WelcomeComponent {
-//   public pageTitle = 'Welcome';
-// }
+export class WelcomeComponent {
+  public pageTitle = 'Welcome';
+}
 
 // CLI
-export class WelcomeComponent implements OnInit {
+// export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+//   constructor() { }
 
-  ngOnInit() {
-  }
+//   ngOnInit() {
+//   }
 
-}
+// }

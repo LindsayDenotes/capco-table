@@ -23,7 +23,7 @@ export class ClientService {
 
   getClient(id: number): Observable<IClient | undefined> {
     return this.getClients().pipe(
-      map((clients: IClient[]) => clients.find(c => c.id === id))
+      map((clients: IClient[]) => clients.find(p => p.id === id))
     );
   }
 
